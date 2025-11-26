@@ -2,3 +2,9 @@ transformers
 torch
 streamlit
 pandas
+transformers
+torch
+streamlit
+pandas
+matplotlib
+
