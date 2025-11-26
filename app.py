@@ -12,7 +12,7 @@ sentiment_pipeline = pipeline(
 
 label_map = {"LABEL_0": "negative", "LABEL_1": "neutral", "LABEL_2": "positive"}
 
-st.title("📊 Sentiment Analysis App")
+st.title("📊 Sentiment Analysis Application")
 st.write("Analyze single text or upload a .txt file with multiple lines.")
 
 # --- Single text input ---
