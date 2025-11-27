@@ -75,8 +75,6 @@ def logout_button():
         if st.sidebar.button("Logout"):
             st.session_state.pop("user", None)
             st.session_state.page = "login"
-            st.stop()
-            st.experimental_rerun()
 
 # ----------------------------
 # Analysis Features
@@ -142,7 +140,11 @@ def batch_analysis():
 def dashboard():
     st.title("Sentiment Analysis Dashboard")
     st.write("Welcome! Analyze single texts or batches with visual explanations, keyword drivers, and comparisons.")
+
+    # Left side: logout button
     logout_button()
+
+    # Right side: app features
     page = st.sidebar.radio("Sections", ["Single Text Analysis", "Batch Analysis"])
     if page == "Single Text Analysis":
         single_text_analysis()
