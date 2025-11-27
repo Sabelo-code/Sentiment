@@ -8,6 +8,7 @@ firebaseConfig = {
   "messagingSenderId": "455254508762",
   "appId": "1:455254508762:web:18c3105e1fd244834b91e3",
   "measurementId": "G-VM7KHC7WGV"
+ "databaseURL" : "https://sentiment-analysis-f6136-default-rtdb.firebaseio.com/"
 }
 
 firebase = pyrebase.initialize_app(firebaseConfig)
