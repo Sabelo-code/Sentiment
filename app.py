@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import re
 from collections import Counter
 from transformers import pipeline
-from firebase_config import auth
+from firebase_config import auth,db
 
 # -------------------------------
 # Sentiment Pipeline (loaded once)
