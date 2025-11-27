@@ -177,7 +177,7 @@ st.markdown(
     <style>
     /* General app background */
     .main {
-        background-color: #ffffff;
+        background-color: #E6E6FA;
     }
 
     /* Sidebar styling */
