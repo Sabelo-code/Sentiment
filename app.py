@@ -40,7 +40,7 @@ def color_for_sentiment(s):
 # Auth Pages
 # ----------------------------
 def signup_page():
-    st.subheader("📝 Create Account")
+    st.subheader("Create User Account")
     email = st.text_input("Email", key="signup_email")
     password = st.text_input("Password", type="password", key="signup_password")
     if st.button("Register"):
@@ -55,7 +55,7 @@ def signup_page():
             st.error("Registration failed. Please check your details or try again.")
 
 def login_page():
-    st.subheader("🔐 Login")
+    st.subheader("Login")
     email = st.text_input("Email", key="login_email")
     password = st.text_input("Password", type="password", key="login_password")
     if st.button("Login"):
@@ -82,7 +82,7 @@ def logout_button():
 # Analysis Features
 # ----------------------------
 def single_text_analysis():
-    st.subheader("✍️ Single Text Analysis")
+    st.subheader("Single Text Analysis")
     user_text = st.text_area("Enter text to analyze:", placeholder="Type a sentence or paragraph...")
     if st.button("Analyze Text"):
         if not user_text.strip():
@@ -116,7 +116,7 @@ def single_text_analysis():
             st.write("No significant keywords found.")
 
 def batch_analysis():
-    st.subheader("📂 Batch Analysis (TXT file)")
+    st.subheader("Batch Analysis (TXT file)")
     uploaded_file = st.file_uploader("Upload a .txt file (one text per line)", type=["txt"])
     if uploaded_file:
         texts = [line.strip() for line in uploaded_file.read().decode("utf-8").splitlines() if line.strip()]
@@ -140,7 +140,7 @@ def batch_analysis():
 # Dashboard
 # ----------------------------
 def dashboard():
-    st.title("📊 Sentiment Analysis Dashboard")
+    st.title("Sentiment Analysis Dashboard")
     st.write("Welcome! Analyze single texts or batches with visual explanations, keyword drivers, and comparisons.")
     logout_button()
     page = st.sidebar.radio("Sections", ["Single Text Analysis", "Batch Analysis"])
@@ -171,6 +171,41 @@ elif st.session_state.page == "dashboard":
     else:
         st.warning("Please log in first to access the dashboard.")
         st.session_state.page = "login"
+
+st.markdown(
+    """
+    <style>
+    /* General app background */
+    .main {
+        background-color: #ffffff;
+    }
+
+    /* Sidebar styling */
+    [data-testid="stSidebar"] {
+        background-color: #f5f5f5;
+    }
+
+    /* Buttons */
+    .stButton>button {
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 8px;
+        padding: 0.5em 1em;
+        border: none;
+    }
+    .stButton>button:hover {
+        background-color: #45a049;
+    }
+
+    /* Titles */
+    h1, h2, h3 {
+        color: #333333;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 
 
