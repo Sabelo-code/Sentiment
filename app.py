@@ -2,6 +2,46 @@ import streamlit as st
 import pandas as pd
 from transformers import pipeline
 import matplotlib.pyplot as plt
+from firebase_config import auth
+
+def signup_page():
+    st.title("📝 Sign Up")
+    email = st.text_input("Email")
+    password = st.text_input("Password", type="password")
+    if st.button("Register"):
+        try:
+            user = auth.create_user_with_email_and_password(email, password)
+            st.success("✅ Account created successfully! You can now log in.")
+        except Exception as e:
+            st.error(f"Error: {e}")
+
+def login_page():
+    st.title("🔐 Login")
+    email = st.text_input("Email")
+    password = st.text_input("Password", type="password")
+    if st.button("Login"):
+        try:
+            user = auth.sign_in_with_email_and_password(email, password)
+            st.session_state["user"] = user
+            st.success("✅ Logged in successfully!")
+        except Exception as e:
+            st.error(f"Error: {e}")
+
+# Navigation
+menu = st.sidebar.selectbox("Menu", ["Login", "Sign Up", "Dashboard"])
+
+if menu == "Login":
+    login_page()
+elif menu == "Sign Up":
+    signup_page()
+elif menu == "Dashboard":
+    if "user" in st.session_state:
+        st.success(f"Welcome {st.session_state['user']['email']}")
+        st.write("📊 Sentiment Analysis Dashboard goes here...")
+        # 👉 Place your sentiment analysis code here
+    else:
+        st.warning("⚠️ Please log in first.")
+
 def login():
     st.title("🔐 Login")
     username = st.text_input("Username")
