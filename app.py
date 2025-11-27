@@ -75,6 +75,7 @@ def logout_button():
         if st.sidebar.button("Logout"):
             st.session_state.pop("user", None)
             st.session_state.page = "login"
+            st.stop()
             st.experimental_rerun()
 
 # ----------------------------
